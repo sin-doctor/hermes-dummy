@@ -36,6 +36,19 @@
             display: inline;
             margin: 0 40px;
         }
+        /*오늘의 추천 상품 css*/
+        .index_container .index_minlisttext{
+            font-weight: bold;
+            font-size: 30px;
+            margin-left: 200px;
+        }
+
+        /*상품 리스트 호버 설정*/
+        .index_container .index_ImageList:hover{
+            border: 3px black solid;
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -48,7 +61,7 @@
     <div class="index_main" th:each="i, mainnumStat : ${products}">
         <img class="index_mainImage" th:if="${mainnumStat.index == 1}" th:src="${i.product_image_path}" alt="제품 이미지">
     </div>
-
+    <p class="index_minlisttext">오늘의 추천 상품</p>
     <!-- 3 ~ 9 번 이미지만 출력하기 위한 조건문 -->
     <!-- 이미지를 리스트로 불러와서 each 문으로 하나씩 출력 -->
     <div class="index_List" th:each="p, listnumStat : ${products}">
