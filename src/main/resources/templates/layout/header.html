@@ -1,0 +1,19 @@
+<header th:fragment="header" xmlns="http://www.w3.org/1999/html">
+    <div class="logo">
+        <a href="/"><img src="/images/hermes-logo.png" alt="Hermes Logo"></a>
+    </div>
+    <nav>
+        <a href="Category_Page">운동화</a>
+        <a href="#">캔버스화</a>
+        <a href="#">스니커즈</a>
+        <a href="#">부츠</a>
+        <a href="#">CROCS</a>
+    </nav>
+    <div class="sign-in">
+        <a th:if="${loggedInUser == null}" href="/signup">회원가입</a>
+        <a th:if="${loggedInUser == null}" href="/login">로그인</a>
+        <a th:if="${loggedInUser != null}" href="/mypage">마이페이지</a>
+        <a th:if="${loggedInUser != null}" href="/logout">로그아웃</a>
+        <a href="/my_page"></a><img src="/images/user-icon.png" alt="User Icon" ></a>
+    </div>
+</header>

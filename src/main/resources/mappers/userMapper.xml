@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hermes.hermes.mapper.UserMapper">
+
+    <insert id="insertUser"> <!-- 회원가입 -->
+        INSERT INTO USER (user_reg_num, user_id, user_pw, user_name, user_verification_answer)
+        VALUES (NULL, #{user_id}, #{user_pw}, #{user_name}, #{user_verification_answer});
+    </insert>
+
+    <select id="checkDuplicatedUserId">
+        SELECT COUNT(*)
+        FROM USER
+        WHERE user_id = #{user_id}
+    </select>
+
+
+    <select id="getAllUsers" >
+        SELECT * FROM USER
+    </select>
+
+    <select id="login">
+        SELECT *
+        FROM USER
+        WHERE USER_ID = #{user_id}
+          AND USER_PW = #{user_pw}
+    </select>
+
+    <select id="login_search">
+        SELECT *
+        FROM USER
+        WHERE USER_verification_answer = #{answer}
+    </select>
+    <select id="login_search_completed">
+    SELECT *
+    FROM USER
+    WHERE user_name= #{user_name}
+    AND user_verification_answer = #{user_verification_answer}
+    </select>
+
+    <select id="myPageService_getUserPurchase">
+        select *
+        from PURCHASE
+        WHERE PURCHASE_USER_ID = #{user_id}
+    </select>
+
+    <update id="myPage_infoCorrection">
+        update USER
+        SET USER_VERIFICATION_ANSWER = #{user_verification_answer}, USER_PW = #{user_pw}
+        WHERE USER_ID = #{user_id}
+    </update>
+</mapper>
